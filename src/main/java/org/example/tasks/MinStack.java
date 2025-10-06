@@ -15,15 +15,15 @@ public class MinStack {
 
     public void push(int val) {
         localStorage.add(val);
-        if(val < minValues.get(minValues.size()-1)) {
+        if(minValues.isEmpty() || val < minValues.get(minValues.size()-1)) {
             minValues.add(val);
         }
     }
 
     public int pop() {
         var top = localStorage.get(localStorage.size() - 1);
-
-        if(minValues.get(minValues.size() - 1) == top) {
+        localStorage.remove(localStorage.size() - 1);
+        if(minValues.get(minValues.size() - 1).equals(top)) {
             minValues.remove(minValues.size() - 1);
         }
         return top;
@@ -34,7 +34,34 @@ public class MinStack {
     }
 
     public int getMin() {
-        return 0;
+        return minValues.get(minValues.size() - 1);
     }
 
 }
+
+//SQL Query
+//Customers
+//id    name
+//1     Joe
+//2     Henry
+//3     Sam
+//4     Max
+
+//Orders
+//1     3
+//2     1
+
+//-----------------------
+//Output
+//Customers
+//----------
+//Henry
+//Max
+
+//==>
+// select c.name as Customers
+// from Customers c
+// left join Orders o on c.id = o.customerId
+// where c.customerId is null;
+//
+//
