@@ -1,10 +1,9 @@
-package org.example.tasks;
+package org.example.tasks.simple_threads;
 
-public class TestThread extends Thread {
-
+public class TestRunnable implements Runnable { //для возможности наследования от другх классов
     private final int threadNum;
 
-    public TestThread(int threadNum) {
+    public TestRunnable(int threadNum) {
         this.threadNum = threadNum;
     }
 
@@ -18,6 +17,5 @@ public class TestThread extends Thread {
                 throw new RuntimeException(e);
             }
         }
-
     }
 }

@@ -1,4 +1,4 @@
-package org.example.tasks;
+package org.example.tasks.stack;
 
 import java.util.ArrayList;
 import java.util.List;
